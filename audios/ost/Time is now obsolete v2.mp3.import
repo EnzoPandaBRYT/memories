@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4nonbx37b0jk"
+path="res://.godot/imported/Time is now obsolete v2.mp3-53851bcad7c8dd9db31c573a6238f216.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/Time is now obsolete v2.mp3"
+dest_files=["res://.godot/imported/Time is now obsolete v2.mp3-53851bcad7c8dd9db31c573a6238f216.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://u2yfv7g2d7j8"]
+
+[ext_resource type="Script" uid="uid://c6m10r6acrsgp" path="res://interactables/scripts/dash_star.gd" id="1_0tg73"]
+[ext_resource type="Texture2D" uid="uid://ln0dewmpsvu3" path="res://assets/interactables/dash_star.png" id="1_4fpif"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fpif"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tg73"]
+atlas = ExtResource("1_4fpif")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp6nn"]
+atlas = ExtResource("1_4fpif")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy4u2"]
+atlas = ExtResource("1_4fpif")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgwrc"]
+atlas = ExtResource("1_4fpif")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_na18l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tg73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp6nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy4u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgwrc")
+}],
+"loop": true,
+"name": &"star",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_0tg73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4fpif"]
+resource_name = "rotation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp6nn"]
+_data = {
+&"RESET": SubResource("Animation_0tg73"),
+&"rotation": SubResource("Animation_4fpif")
+}
+
+[sub_resource type="Curve" id="Curve_0tg73"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.213483), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="dash_star" type="Area2D"]
+script = ExtResource("1_0tg73")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4fpif")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_na18l")
+animation = &"star"
+autoplay = "star"
+frame_progress = 0.78909
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sp6nn")
+}
+autoplay = "rotation"
+
+[node name="particles" type="CPUParticles2D" parent="."]
+amount = 32
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, -50)
+orbit_velocity_min = -2.0
+orbit_velocity_max = 2.0
+angle_min = -116.4
+angle_max = 218.2
+scale_amount_curve = SubResource("Curve_0tg73")
+color = Color(0.968627, 0.839216, 0.443137, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

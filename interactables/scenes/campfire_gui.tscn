@@ -1,0 +1,377 @@
+[gd_scene load_steps=35 format=3 uid="uid://cbjykihujme34"]
+
+[ext_resource type="Texture2D" uid="uid://dtq2aq1ytydkj" path="res://assets/interactables/campfire.png" id="2_f3pm3"]
+[ext_resource type="Script" uid="uid://d1ydw0066xab4" path="res://interactables/scripts/campfire_gui/campfire_gui.gd" id="2_sokgu"]
+[ext_resource type="Texture2D" uid="uid://cvjxuinydvl3j" path="res://assets/particles/smoke.png" id="3_v02rd"]
+[ext_resource type="Script" uid="uid://c1aql67sj027e" path="res://interactables/scripts/campfire_gui/label.gd" id="5_v02rd"]
+
+[sub_resource type="Animation" id="Animation_v02rd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui/achieved:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gui:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gui:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("gui:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("gui:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_f3pm3"]
+resource_name = "green_blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui/achieved:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0745098, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_55mwo"]
+resource_name = "reduce_opacity"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gui:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gui:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gui:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.3, -0.00823283, 0.482353, -0.666667, 0.0134896, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55mwo"]
+_data = {
+&"RESET": SubResource("Animation_v02rd"),
+&"green_blink": SubResource("Animation_f3pm3"),
+&"reduce_opacity": SubResource("Animation_55mwo")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufmpu"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdyp8"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sehil"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tofpu"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3lm3"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq21c"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfnka"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s5ys"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fhrd"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yca7e"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snjlu"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcyy"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ajuk"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i8ed"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rra7l"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvrkg"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7jxj"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55mrj"]
+atlas = ExtResource("2_f3pm3")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekk3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufmpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdyp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sehil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tofpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3lm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq21c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfnka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s5ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fhrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yca7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snjlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ajuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i8ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rra7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7jxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55mrj")
+}],
+"loop": true,
+"name": &"campfire",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve" id="Curve_kdyp8"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(2, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sehil"]
+curve = SubResource("Curve_kdyp8")
+
+[sub_resource type="Curve" id="Curve_sehil"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tofpu"]
+curve = SubResource("Curve_sehil")
+
+[sub_resource type="Curve" id="Curve_tofpu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.662921), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x3lm3"]
+curve = SubResource("Curve_tofpu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sehil"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 5, 0)
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+angle_min = -8.29999
+angle_max = 16.5
+angular_velocity_min = -24.83
+angular_velocity_max = 16.55
+gravity = Vector3(0, -49, 0)
+damping_max = 36.781
+scale_min = 0.1
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_x3lm3")
+alpha_curve = SubResource("CurveTexture_sehil")
+hue_variation_curve = SubResource("CurveTexture_tofpu")
+turbulence_enabled = true
+turbulence_noise_strength = 3.92
+
+[node name="campfire_gui" type="CanvasLayer"]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_55mwo")
+}
+
+[node name="gui" type="Node2D" parent="."]
+
+[node name="campfire_gui" type="AnimatedSprite2D" parent="gui"]
+z_index = -1
+position = Vector2(14, 10)
+sprite_frames = SubResource("SpriteFrames_ekk3r")
+animation = &"campfire"
+autoplay = "campfire"
+frame_progress = 0.849508
+script = ExtResource("2_sokgu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="gui/campfire_gui"]
+modulate = Color(1, 1, 1, 0.258824)
+amount = 48
+texture = ExtResource("3_v02rd")
+lifetime = 1.5
+randomness = 1.0
+fixed_fps = 24
+process_material = SubResource("ParticleProcessMaterial_sehil")
+
+[node name="achieved" type="Label" parent="gui"]
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 69.0
+offset_bottom = 31.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+text = "0/6"
+script = ExtResource("5_v02rd")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsjvp2jcex54l"]
+
+[ext_resource type="Script" uid="uid://cx4j183ts3pji" path="res://interactables/scripts/double_jump.gd" id="1_pjepq"]
+[ext_resource type="Texture2D" uid="uid://dlllor58dwdoa" path="res://assets/interactables/double_jump_sprite_dual.png" id="2_ek6sk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek6sk"]
+size = Vector2(10.2857, 10.2857)
+
+[node name="double_jump_item" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_pjepq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(1.75, 1.75)
+shape = SubResource("RectangleShape2D_ek6sk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.706897, 0.706897)
+texture = ExtResource("2_ek6sk")
+region_enabled = true
+region_rect = Rect2(15, 14, 33, 31)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
