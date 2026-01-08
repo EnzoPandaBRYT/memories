@@ -502,16 +502,16 @@ frame_progress = 0.849508
 
 [node name="saved" type="Label" parent="."]
 offset_left = -65.0
-offset_top = 27.0
+offset_top = 26.6526
 offset_right = 66.0
-offset_bottom = 66.0
+offset_bottom = 65.6526
 scale = Vector2(0.3, 0.3)
 pivot_offset = Vector2(65, 19.5)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
-text = "saved"
+text = "salvo"
 horizontal_alignment = 1
 
 [node name="animation" type="AnimationPlayer" parent="."]

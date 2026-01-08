@@ -1,9 +1,18 @@
-[gd_scene load_steps=35 format=3 uid="uid://cbjykihujme34"]
+[gd_scene load_steps=46 format=3 uid="uid://cbjykihujme34"]
 
+[ext_resource type="Script" uid="uid://bbatyaar0swu4" path="res://scripts/gui/gui_controller_handler.gd" id="1_0y3ue"]
 [ext_resource type="Texture2D" uid="uid://dtq2aq1ytydkj" path="res://assets/interactables/campfire.png" id="2_f3pm3"]
-[ext_resource type="Script" uid="uid://d1ydw0066xab4" path="res://interactables/scripts/campfire_gui/campfire_gui.gd" id="2_sokgu"]
+[ext_resource type="Script" uid="uid://bob52ed6juhi5" path="res://interactables/scripts/campfire_gui/sprite_wiggle.gd" id="2_sokgu"]
+[ext_resource type="Script" uid="uid://d1ydw0066xab4" path="res://interactables/scripts/campfire_gui/campfire.gd" id="2_v02rd"]
 [ext_resource type="Texture2D" uid="uid://cvjxuinydvl3j" path="res://assets/particles/smoke.png" id="3_v02rd"]
-[ext_resource type="Script" uid="uid://c1aql67sj027e" path="res://interactables/scripts/campfire_gui/label.gd" id="5_v02rd"]
+[ext_resource type="Script" uid="uid://c1aql67sj027e" path="res://interactables/scripts/campfire_gui/label_campfire.gd" id="4_55mwo"]
+[ext_resource type="Texture2D" uid="uid://b4t68wiqhysl2" path="res://assets/buttons/xbox_buttons/X-button.png" id="5_55mwo"]
+[ext_resource type="Script" uid="uid://co6ciqsj5x0yn" path="res://interactables/scripts/campfire_gui/label_handler.gd" id="5_v02rd"]
+[ext_resource type="Texture2D" uid="uid://mrvx1esfbsgj" path="res://assets/buttons/xbox_buttons/A-button.png" id="8_8aqvy"]
+[ext_resource type="Texture2D" uid="uid://balieub1rw4yr" path="res://assets/buttons/direction_arrows/shift_button.png" id="8_l0ml7"]
+[ext_resource type="Texture2D" uid="uid://xvd3i08s7s02" path="res://assets/buttons/direction_arrows/up_arrow.png" id="9_3d2kt"]
+[ext_resource type="Texture2D" uid="uid://dmgj4npnpuwo3" path="res://assets/buttons/direction_arrows/ctrl_button.png" id="11_akgrk"]
+[ext_resource type="Texture2D" uid="uid://cqx6ccueh2ue" path="res://assets/buttons/direction_arrows/R_button.png" id="13_wp65h"]
 
 [sub_resource type="Animation" id="Animation_v02rd"]
 length = 0.001
@@ -75,10 +84,34 @@ tracks/5/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("gui/+1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.00392157, 1, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("gui/+1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23, 6)]
+}
 
 [sub_resource type="Animation" id="Animation_f3pm3"]
 resource_name = "green_blink"
-length = 0.4
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -103,8 +136,54 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gui/+1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.00392157, 1, 0, 0), Color(0.00392157, 1, 0, 1), Color(0.00392157, 1, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gui/+1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23, 6), Vector2(23, -6)]
+}
 
-[sub_resource type="Animation" id="Animation_55mwo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55mwo"]
+_data = {
+&"RESET": SubResource("Animation_v02rd"),
+&"green_blink": SubResource("Animation_f3pm3")
+}
+
+[sub_resource type="Animation" id="Animation_8aqvy"]
+resource_name = "normal_opacity"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3d2kt"]
 resource_name = "reduce_opacity"
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -151,11 +230,10 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_55mwo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0y3ue"]
 _data = {
-&"RESET": SubResource("Animation_v02rd"),
-&"green_blink": SubResource("Animation_f3pm3"),
-&"reduce_opacity": SubResource("Animation_55mwo")
+&"normal_opacity": SubResource("Animation_8aqvy"),
+&"reduce_opacity": SubResource("Animation_3d2kt")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufmpu"]
@@ -343,7 +421,26 @@ libraries = {
 &"": SubResource("AnimationLibrary_55mwo")
 }
 
+[node name="animation_gui" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0y3ue")
+}
+
 [node name="gui" type="Node2D" parent="."]
+script = ExtResource("1_0y3ue")
+
+[node name="+1" type="Label" parent="gui"]
+modulate = Color(0.00392157, 1, 0, 0)
+offset_left = 23.0
+offset_top = 6.0
+offset_right = 67.0
+offset_bottom = 61.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "+1"
 
 [node name="campfire_gui" type="AnimatedSprite2D" parent="gui"]
 z_index = -1
@@ -352,7 +449,7 @@ sprite_frames = SubResource("SpriteFrames_ekk3r")
 animation = &"campfire"
 autoplay = "campfire"
 frame_progress = 0.849508
-script = ExtResource("2_sokgu")
+script = ExtResource("2_v02rd")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="gui/campfire_gui"]
 modulate = Color(1, 1, 1, 0.258824)
@@ -368,10 +465,104 @@ offset_left = 25.0
 offset_top = 5.0
 offset_right = 69.0
 offset_bottom = 31.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
 text = "0/6"
+script = ExtResource("4_55mwo")
+
+[node name="X-button" type="Sprite2D" parent="gui"]
+position = Vector2(7.66667, 172.667)
+scale = Vector2(0.0611979, 0.0611979)
+texture = ExtResource("5_55mwo")
+script = ExtResource("2_sokgu")
+
+[node name="ShiftButton" type="Sprite2D" parent="gui"]
+position = Vector2(8.33333, 173)
+scale = Vector2(0.0955885, 0.0955885)
+texture = ExtResource("8_l0ml7")
+script = ExtResource("2_sokgu")
+
+[node name="zoom" type="Label" parent="gui"]
+offset_left = 15.0
+offset_top = 170.333
+offset_right = 388.0
+offset_bottom = 225.333
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "= mudar zoom"
+script = ExtResource("5_v02rd")
+
+[node name="A-button" type="Sprite2D" parent="gui"]
+position = Vector2(7.91667, 157.584)
+scale = Vector2(0.0611979, 0.0611979)
+texture = ExtResource("8_8aqvy")
+script = ExtResource("2_sokgu")
+
+[node name="UpArrow" type="Sprite2D" parent="gui"]
+position = Vector2(7.91667, 157.25)
+scale = Vector2(0.115196, 0.115196)
+texture = ExtResource("9_3d2kt")
+script = ExtResource("2_sokgu")
+
+[node name="jump" type="Label" parent="gui"]
+offset_left = 13.3333
+offset_top = 154.667
+offset_right = 386.333
+offset_bottom = 209.667
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "= Pular"
+script = ExtResource("5_v02rd")
+
+[node name="CtrlButton" type="Sprite2D" parent="gui"]
+position = Vector2(8.33333, 165.333)
+scale = Vector2(0.0882351, 0.0882351)
+texture = ExtResource("11_akgrk")
+script = ExtResource("2_sokgu")
+
+[node name="look_around" type="Label" parent="gui"]
+offset_left = 15.3333
+offset_top = 162.0
+offset_right = 475.334
+offset_bottom = 217.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "= Olhar em volta"
+script = ExtResource("5_v02rd")
+
+[node name="RButton" type="Sprite2D" parent="gui"]
+position = Vector2(8, 148.667)
+scale = Vector2(0.115196, 0.115196)
+texture = ExtResource("13_wp65h")
+script = ExtResource("2_sokgu")
+
+[node name="restart" type="Label" parent="gui"]
+offset_left = 14.3333
+offset_top = 146.333
+offset_right = 669.333
+offset_bottom = 201.333
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "= Voltar ao checkpoint"
 script = ExtResource("5_v02rd")

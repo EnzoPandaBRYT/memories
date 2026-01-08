@@ -10,11 +10,16 @@ var checkpoint_y = 410.0
 
 # Poderes
 var jumps = 1
-var max_jumps = 1
+var max_jumps = 2
 var gravity_inverted = false
 
 # Infos para o Dash
 var last_dir = 0.0
 var external_force = 0.0
 
+# Fogueiras passadas
 var campfires_reached = 0
+
+# Zoom da camera
+var zoom_out := false
+var looking_around := false

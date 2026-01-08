@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 		player_movement() # Movimentação do personagem
 		move_and_slide()
+		_reset_char()
 	
 	if is_on_floor() or is_on_ceiling(): 
 		if _state == 1 and !footstep_playing:
@@ -101,7 +102,10 @@ func player_movement():
 		await get_tree().create_timer(0.1).timeout
 		can_jump = true
 		
-	if is_on_floor() or is_on_ceiling():
+	if is_on_floor() and !PlayerVars.gravity_inverted:
+		PlayerVars.jumps = PlayerVars.max_jumps
+	
+	if is_on_ceiling() and PlayerVars.gravity_inverted:
 		PlayerVars.jumps = PlayerVars.max_jumps
 	
 func _set_Gravity(delta: float) -> void:
@@ -113,3 +117,16 @@ func _set_Gravity(delta: float) -> void:
 		if !is_on_floor() or is_on_ceiling():
 			velocity += get_gravity() * delta # Gravidade
 			scale.y = 1
+
+func _reset_char():
+	if Input.is_action_just_pressed("reset_char"):
+		AudioPlayer._blood()
+		await get_tree().create_timer(0.1).timeout
+		position.x = PlayerVars.checkpoint_x
+		position.y = PlayerVars.checkpoint_y
+		PlayerVars.can_control = false
+		PlayerVars.died = true
+		await get_tree().create_timer(1).timeout
+		can_jump = true
+		PlayerVars.died = false
+		PlayerVars.can_control = true

@@ -73,16 +73,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 	
 	if body.is_in_group("invert_gravity"):
-		AudioPlayer._inverted_gravity()
-		PlayerVars.gravity_inverted = true
+		if !PlayerVars.gravity_inverted:
+			AudioPlayer._inverted_gravity()
+			PlayerVars.gravity_inverted = true
 	
 	if body.is_in_group("normalize_gravity"):
-		AudioPlayer._normalized_gravity()
-		PlayerVars.gravity_inverted = false
+		if PlayerVars.gravity_inverted:
+			AudioPlayer._normalized_gravity()
+			PlayerVars.gravity_inverted = false
 		
 	if body.is_in_group("secret_1"):
 		$"../ground/secrets/secrets".play("secret_1_reveal")
-
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.is_in_group("secret_1"):

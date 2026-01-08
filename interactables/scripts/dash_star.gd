@@ -16,9 +16,9 @@ func _on_body_entered(body: Node2D) -> void:
 		AudioPlayer._dash()
 		PlayerVars.external_force = PlayerVars.last_dir * 500
 		if !PlayerVars.gravity_inverted:
-			body.velocity.y -= 400
+			body.velocity.y = -400
 		else:
-			body.velocity.y += 400
+			body.velocity.y = +400
 		await get_tree().create_timer(0.2).timeout
 		PlayerVars.external_force = 0.0
 		
