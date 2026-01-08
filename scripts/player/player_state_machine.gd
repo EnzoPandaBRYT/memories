@@ -39,11 +39,18 @@ func _physics_process(delta: float) -> void:
 		_reset_char()
 	
 	if is_on_floor() or is_on_ceiling(): 
-		if _state == 1 and !footstep_playing:
-			footstep_playing = true
-			AudioPlayer.fstep_stone()
-			await get_tree().create_timer(0.5).timeout
-			footstep_playing = false
+		if !PlayerVars.slowed:
+			if _state == 1 and !footstep_playing:
+				footstep_playing = true
+				AudioPlayer.fstep_stone()
+				await get_tree().create_timer(0.5).timeout
+				footstep_playing = false
+		else:
+			if _state == 1 and !footstep_playing:
+				footstep_playing = true
+				AudioPlayer.fstep_stone()
+				await get_tree().create_timer(1).timeout
+				footstep_playing = false
 	
 
 func _enterState(animation: String) -> void: # Em suma, toca a animação que coloca lá no player.gd

@@ -5,9 +5,9 @@ extends Node2D
 @onready var zoom_button_xbox = $"X-button"
 @onready var zoom_button_pc = $"ShiftButton"
 
-var controllers_connected = Input.get_connected_joypads().size()
 
 func _physics_process(delta: float) -> void:
+	var controllers_connected = Input.get_connected_joypads().size()
 	if controllers_connected:
 		jump_button_pc.visible = false
 		zoom_button_pc.visible = false

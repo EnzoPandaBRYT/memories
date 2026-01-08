@@ -73,8 +73,8 @@ func _blood():
 func _collected():
 	play_FX(game_saved, -9, randf_range(0.6,0.7))
 	
-func _saved_game():
-	play_FX(game_saved, -9, randf_range(0.93,1.03))
+func _saved_game(pitch = randf_range(0.93,1.03)):
+	play_FX(game_saved, -9, pitch)
 
 func _dash():
 	play_FX(dash, -9, randf_range(0.93,1.03))

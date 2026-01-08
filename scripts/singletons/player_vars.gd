@@ -3,6 +3,7 @@ extends Node
 # Pode controlar o The Man?
 var can_control = true
 var died = false
+var slowed = false
 
 # Posições que irá voltar caso morra
 var checkpoint_x = 25.0
@@ -18,7 +19,7 @@ var last_dir = 0.0
 var external_force = 0.0
 
 # Fogueiras passadas
-var campfires_reached = 0
+var campfires_reached = 8
 
 # Zoom da camera
 var zoom_out := false

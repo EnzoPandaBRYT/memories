@@ -10,25 +10,25 @@ var pressed_button = false
 
 func _ready():
 	start_y = position.y
-	await get_tree().create_timer(3).timeout
-	$"../../animation".play("reduce_opacity")
 
 func _process(delta):
 	# flutuação
 	position.y = start_y + sin(Time.get_ticks_msec() / 1000.0 * speed) * amplitude
 
 func _physics_process(delta: float) -> void:
-	
+	var controllers_connected := Input.get_connected_joypads().size()
 	if campfires_reached != PlayerVars.campfires_reached:
 		$"../../animation".play("green_blink")
 		campfires_reached += PlayerVars.campfires_reached - campfires_reached
-		text = str(campfires_reached) + "/6"
-		await get_tree().create_timer(3).timeout
-		$"../../animation_gui".play("reduce_opacity")
+		text = str(campfires_reached) + "/9"
 
 	if Input.is_anything_pressed() and !pressed_button:
 		pressed_button = true
 		$"../../animation_gui".play("normal_opacity")
+		if controllers_connected:
+			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
 	if pressed_button:
 		$"../../animation_gui".play("reduce_opacity")
