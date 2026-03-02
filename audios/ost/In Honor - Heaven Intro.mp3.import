@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pcl1c6q6jdkx"
+path="res://.godot/imported/In Honor - Heaven Intro.mp3-bfd56160adbd6aa5f4aa079d61a31555.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/In Honor - Heaven Intro.mp3"
+dest_files=["res://.godot/imported/In Honor - Heaven Intro.mp3-bfd56160adbd6aa5f4aa079d61a31555.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

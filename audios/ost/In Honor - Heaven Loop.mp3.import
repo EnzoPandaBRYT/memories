@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3xuop3q84sy1"
+path="res://.godot/imported/In Honor - Heaven Loop.mp3-c47ae354c376e38cb42657ad9119a8b0.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/In Honor - Heaven Loop.mp3"
+dest_files=["res://.godot/imported/In Honor - Heaven Loop.mp3-c47ae354c376e38cb42657ad9119a8b0.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

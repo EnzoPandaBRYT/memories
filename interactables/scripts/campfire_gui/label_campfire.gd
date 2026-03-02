@@ -13,14 +13,17 @@ func _ready():
 
 func _process(delta):
 	# flutuação
+	if PlayerVars.no_campfire_mode:
+		text = "X/X"
+	else:
+		text = str(campfires_reached) + "/" + str(PlayerVars.campfires_in_level)
 	position.y = start_y + sin(Time.get_ticks_msec() / 1000.0 * speed) * amplitude
 
 func _physics_process(delta: float) -> void:
 	var controllers_connected := Input.get_connected_joypads().size()
 	if campfires_reached != PlayerVars.campfires_reached:
 		$"../../animation".play("green_blink")
-		campfires_reached += PlayerVars.campfires_reached - campfires_reached
-		text = str(campfires_reached) + "/9"
+		campfires_reached +=  PlayerVars.campfires_reached - campfires_reached
 
 	if Input.is_anything_pressed() and !pressed_button:
 		pressed_button = true

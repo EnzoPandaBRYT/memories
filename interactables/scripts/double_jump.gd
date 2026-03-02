@@ -19,5 +19,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		PlayerVars.max_jumps = 2
 		PlayerVars.jumps = 2
+		PlayerVars.double_jump_unlocked = true
 		AudioPlayer._collected()
+		Input.start_joy_vibration(0, 0.4, 0.4, 1)
+		$animation.play("double_jump_unlocked")
+
+func _on_animation_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "double_jump_unlocked":
 		queue_free()

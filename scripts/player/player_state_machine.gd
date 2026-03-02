@@ -20,7 +20,7 @@ var _VerticalInput: float:
 var _jump_action: bool:
 	get: return Input.is_action_just_pressed("jump")
 
-var _player_speed = 100
+var _player_speed = PlayerVars.player_speed
 var _jump_speed = -100.0
 
 var can_jump = true
@@ -33,20 +33,20 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.JUMP: _jump()
 	
 	if PlayerVars.can_control:
-		_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
+		_set_Gravity(delta/PlayerVars.gravity_modifier) # Gravidade que usa o parâmetro "delta"
 		player_movement() # Movimentação do personagem
 		move_and_slide()
 		_reset_char()
 	
 	if is_on_floor() or is_on_ceiling(): 
 		if !PlayerVars.slowed:
-			if _state == 1 and !footstep_playing:
+			if _state == 1 and !footstep_playing and !PlayerVars.changing_levels:
 				footstep_playing = true
 				AudioPlayer.fstep_stone()
 				await get_tree().create_timer(0.5).timeout
 				footstep_playing = false
 		else:
-			if _state == 1 and !footstep_playing:
+			if _state == 1 and !footstep_playing and !PlayerVars.changing_levels:
 				footstep_playing = true
 				AudioPlayer.fstep_stone()
 				await get_tree().create_timer(1).timeout
@@ -78,6 +78,8 @@ func player_movement():
 	if _Input:
 		PlayerVars.last_dir = _Input
 		velocity.x = sign(_Input) * _player_speed + PlayerVars.external_force
+	if !_Input:
+		velocity.x = 0
 	
 	if _Input > 0:
 		_animated_sprite.flip_h = false
@@ -127,6 +129,7 @@ func _set_Gravity(delta: float) -> void:
 
 func _reset_char():
 	if Input.is_action_just_pressed("reset_char"):
+		PlayerVars.player_health_buffer = PlayerVars.player_health
 		AudioPlayer._blood()
 		await get_tree().create_timer(0.1).timeout
 		position.x = PlayerVars.checkpoint_x

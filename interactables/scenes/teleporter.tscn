@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://b3c5dt872j01t"]
+
+[ext_resource type="Script" uid="uid://caucs0n2aaxtt" path="res://interactables/scripts/teleporter.gd" id="1_2ph36"]
+[ext_resource type="Texture2D" uid="uid://cqaae0tdneyni" path="res://assets/interactables/teleporter.png" id="2_2ph36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88ws6"]
+size = Vector2(6, 161.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ph36"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mixh1"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(16, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cskj8"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(32, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3im6"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(48, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q1a8"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(64, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0slc"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(80, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cgqd"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(96, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro6j0"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(112, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm8sf"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(128, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa5r3"]
+atlas = ExtResource("2_2ph36")
+region = Rect2(144, 0, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cskj8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ph36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mixh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cskj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3im6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q1a8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_i0slc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cgqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro6j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm8sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa5r3")
+}],
+"loop": true,
+"name": &"teleporter",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve" id="Curve_2ph36"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505682, 0.505618), -1.24511, -1.24511, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="teleporter" type="Area2D"]
+script = ExtResource("1_2ph36")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -72.75)
+shape = SubResource("RectangleShape2D_88ws6")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -48)
+scale = Vector2(2.33333, 2.33333)
+sprite_frames = SubResource("SpriteFrames_cskj8")
+animation = &"teleporter"
+autoplay = "teleporter"
+frame_progress = 0.251414
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -95)
+amount = 256
+emission_shape = 3
+emission_rect_extents = Vector2(8, 100)
+gravity = Vector2(0, 0)
+radial_accel_min = -50.0
+radial_accel_max = 50.0
+tangential_accel_min = -50.0
+tangential_accel_max = 50.0
+scale_amount_curve = SubResource("Curve_2ph36")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

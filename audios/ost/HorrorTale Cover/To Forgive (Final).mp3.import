@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dusbh4k0myt16"
+path="res://.godot/imported/To Forgive (Final).mp3-35117c05ed3c8f7d361ccf724fa21b7f.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/HorrorTale Cover/To Forgive (Final).mp3"
+dest_files=["res://.godot/imported/To Forgive (Final).mp3-35117c05ed3c8f7d361ccf724fa21b7f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

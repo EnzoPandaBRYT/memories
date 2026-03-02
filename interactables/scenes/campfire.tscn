@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://b5ut8vufyj0up"]
+[gd_scene load_steps=36 format=3 uid="uid://b5ut8vufyj0up"]
 
 [ext_resource type="Texture2D" uid="uid://dtq2aq1ytydkj" path="res://assets/interactables/campfire.png" id="1_ekk3r"]
 [ext_resource type="Script" uid="uid://f427ax0fungg" path="res://interactables/scripts/campfire.gd" id="1_ufmpu"]
 [ext_resource type="Texture2D" uid="uid://cvjxuinydvl3j" path="res://assets/particles/smoke.png" id="3_kdyp8"]
+[ext_resource type="Texture2D" uid="uid://d0lf41l8eb1ds" path="res://assets/interactables/unlit_campfire.png" id="3_sehil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88ws6"]
 size = Vector2(112, 41)
@@ -79,6 +80,10 @@ region = Rect2(256, 0, 16, 16)
 atlas = ExtResource("1_ekk3r")
 region = Rect2(272, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r7yn"]
+atlas = ExtResource("3_sehil")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekk3r"]
 animations = [{
 "frames": [{
@@ -139,9 +144,18 @@ animations = [{
 "loop": true,
 "name": &"campfire",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r7yn")
+}],
+"loop": true,
+"name": &"unlit_campfire",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_kdyp8"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -234,7 +248,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("saved:self_modulate:r")
+tracks/8/path = NodePath("saved:self_modulate:a")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -242,50 +256,29 @@ tracks/8/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/9/type = "bezier"
+tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("saved:self_modulate:g")
+tracks/9/path = NodePath("saved:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("saved:self_modulate:b")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("saved:self_modulate:a")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("saved:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("collision:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ufmpu"]
@@ -376,7 +369,7 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0, -47, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-20, -0.25, 0, 0.25, 0, -47, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2)
 }
 tracks/8/type = "bezier"
@@ -434,6 +427,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("collision:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sehil"]
@@ -496,13 +501,13 @@ z_index = -1
 sprite_frames = SubResource("SpriteFrames_ekk3r")
 animation = &"campfire"
 autoplay = "campfire"
-frame_progress = 0.849508
 
 [node name="saved" type="Label" parent="."]
+visible = false
 offset_left = -65.0
-offset_top = -47.0
+offset_top = -20.0
 offset_right = 66.0
-offset_bottom = -8.0
+offset_bottom = 19.0
 scale = Vector2(0.3, 0.3)
 pivot_offset = Vector2(65, 19.5)
 size_flags_horizontal = 4

@@ -1,0 +1,153 @@
+[gd_scene load_steps=20 format=3 uid="uid://dvcqa5nuck8pe"]
+
+[ext_resource type="Script" uid="uid://bdafuhipyiepl" path="res://gui/scripts/loading_screen/loading_label.gd" id="1_5kvr0"]
+[ext_resource type="Script" uid="uid://dgjcvtwxha60x" path="res://gui/scripts/loading_screen/loading_screen.gd" id="1_jbbdj"]
+[ext_resource type="Texture2D" uid="uid://ch6emhg34ctmq" path="res://assets/char/the_man/The Man - Idle.png" id="2_k08wu"]
+[ext_resource type="Texture2D" uid="uid://o2auijoy4643" path="res://assets/char/the_man/The Man - Jumping.png" id="3_jbbdj"]
+[ext_resource type="Texture2D" uid="uid://dcd3jrorrfs4w" path="res://assets/char/the_man/The Man - Walking.png" id="4_poo32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6leb"]
+atlas = ExtResource("2_k08wu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dirf7"]
+atlas = ExtResource("2_k08wu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idpv6"]
+atlas = ExtResource("2_k08wu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpf03"]
+atlas = ExtResource("2_k08wu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dc8e"]
+atlas = ExtResource("3_jbbdj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on558"]
+atlas = ExtResource("4_poo32")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqopd"]
+atlas = ExtResource("4_poo32")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icpky"]
+atlas = ExtResource("4_poo32")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58jvb"]
+atlas = ExtResource("4_poo32")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l73k"]
+atlas = ExtResource("4_poo32")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqrcq"]
+atlas = ExtResource("4_poo32")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2agh"]
+atlas = ExtResource("4_poo32")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpo3a"]
+atlas = ExtResource("4_poo32")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm2d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6leb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idpv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpf03")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dc8e")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on558")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqopd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icpky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58jvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l73k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqrcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2agh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpo3a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[node name="loading_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbbdj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="loading" type="Label" parent="."]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 475.0
+offset_right = 955.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 22
+text = "Carregando..."
+script = ExtResource("1_5kvr0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="anim" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(643, 445)
+scale = Vector2(2.50781, 2.50781)
+sprite_frames = SubResource("SpriteFrames_gm2d0")
+animation = &"walk"
+autoplay = "walk"

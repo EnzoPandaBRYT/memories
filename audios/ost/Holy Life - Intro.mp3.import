@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://woa1s0uqwr0p"
+path="res://.godot/imported/Holy Life - Intro.mp3-6acf566eeb412d64c864033ebb613545.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/Holy Life - Intro.mp3"
+dest_files=["res://.godot/imported/Holy Life - Intro.mp3-6acf566eeb412d64c864033ebb613545.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

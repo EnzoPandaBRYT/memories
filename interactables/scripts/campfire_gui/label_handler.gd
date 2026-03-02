@@ -16,13 +16,18 @@ func _process(delta):
 	else:
 		$".".text = "= Mudar zoom"
 	
-	if PlayerVars.max_jumps > 1:
+	if PlayerVars.max_jumps >= 1:
 		match PlayerVars.jumps:
 			0:
 				$"../jump".text = "= Pular"
 				$"../jump".add_theme_color_override("font_color", "red")
 			1:
-				$"../jump".text = "= Pular no ar"
+				if PlayerVars.double_jump_unlocked:
+					$"../jump".text = "= Pular no ar"
+					$"../jump".add_theme_color_override("font_color", "white")
+				else:
+					$"../jump".text = "= Pular"
+					$"../jump".add_theme_color_override("font_color", "white")
 			2:
 				$"../jump".text = "= Pular"
 				$"../jump".add_theme_color_override("font_color", "white")

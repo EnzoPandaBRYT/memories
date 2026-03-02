@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djfj3im1h5ydd"
+path="res://.godot/imported/Fast Heart Beat - Sound Effect 0.mp3-503384c202fda2da9208ebd6b9587c6d.mp3str"
+
+[deps]
+
+source_file="res://audios/sfx/Fast Heart Beat - Sound Effect 0.mp3"
+dest_files=["res://.godot/imported/Fast Heart Beat - Sound Effect 0.mp3-503384c202fda2da9208ebd6b9587c6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

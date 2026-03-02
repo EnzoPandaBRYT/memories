@@ -1,0 +1,334 @@
+[gd_scene load_steps=30 format=3 uid="uid://b82na3fbwy32j"]
+
+[ext_resource type="Script" uid="uid://b8k4ktu43frcu" path="res://levels/scripts/level_2.gd" id="1_40qpg"]
+[ext_resource type="PackedScene" uid="uid://dj7i24oih1bqu" path="res://characters/player/player.tscn" id="2_be30o"]
+[ext_resource type="Texture2D" uid="uid://bkuc8seul2krq" path="res://assets/tilesets/doomsville/dark_ground.png" id="3_cvyl2"]
+[ext_resource type="Texture2D" uid="uid://nfwue3r3h7h6" path="res://assets/tilesets/doomsville/slime.png" id="4_38mcn"]
+[ext_resource type="Texture2D" uid="uid://dd0vygmqagjvu" path="res://assets/tilesets/doomsville/spikes_v2.png" id="5_0jqht"]
+[ext_resource type="Texture2D" uid="uid://bh4tmn7cjpc5r" path="res://assets/tilesets/doomsville/invert_gravity_block.png" id="6_bepvx"]
+[ext_resource type="Texture2D" uid="uid://d0an2h0hafphc" path="res://assets/tilesets/doomsville/normalize_gravity_block.png" id="7_nju7u"]
+[ext_resource type="Script" uid="uid://tsh4cei7rpeh" path="res://levels/scripts/cannot_escape.gd" id="13_a7v85"]
+[ext_resource type="PackedScene" uid="uid://cbjykihujme34" path="res://interactables/scenes/campfire_gui.tscn" id="14_qb8qv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7r7j"]
+texture = ExtResource("3_cvyl2")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/z_index = -2
+
+[sub_resource type="TileSet" id="TileSet_gmgay"]
+physics_layer_0/collision_layer = 8
+sources/3 = SubResource("TileSetAtlasSource_w7r7j")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7inod"]
+texture = ExtResource("4_38mcn")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_lo8o4"]
+physics_layer_0/collision_layer = 16
+sources/0 = SubResource("TileSetAtlasSource_7inod")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rm5t"]
+texture = ExtResource("5_0jqht")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_rxat5"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_1rm5t")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cclxc"]
+texture = ExtResource("6_bepvx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_wjxiy"]
+physics_layer_0/collision_layer = 64
+sources/0 = SubResource("TileSetAtlasSource_cclxc")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1jwq"]
+texture = ExtResource("7_nju7u")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_08udq"]
+physics_layer_0/collision_layer = 128
+sources/0 = SubResource("TileSetAtlasSource_n1jwq")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08udq"]
+texture = ExtResource("3_cvyl2")
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lmvm7"]
+sources/0 = SubResource("TileSetAtlasSource_08udq")
+
+[sub_resource type="Animation" id="Animation_08udq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("red_bg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 65)]
+}
+
+[sub_resource type="Animation" id="Animation_n1jwq"]
+resource_name = "red_bg_moving"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("red_bg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 49), Vector2(14.4, 63.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmvm7"]
+_data = {
+&"RESET": SubResource("Animation_08udq"),
+&"red_bg_moving": SubResource("Animation_n1jwq")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo8o4"]
+texture = ExtResource("3_cvyl2")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1rm5t"]
+physics_layer_0/collision_layer = 32
+sources/0 = SubResource("TileSetAtlasSource_lo8o4")
+
+[sub_resource type="Animation" id="Animation_1rm5t"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("secret_1:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("secret_1:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("secret_1:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("secret_1:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_lo8o4"]
+resource_name = "secret_1_reveal"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("secret_1:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("secret_1:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("secret_1:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("secret_1:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.51)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxat5"]
+_data = {
+&"RESET": SubResource("Animation_1rm5t"),
+&"secret_1_reveal": SubResource("Animation_lo8o4")
+}
+
+[node name="level_2" type="Node2D"]
+script = ExtResource("1_40qpg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
+zoom = Vector2(1.2, 1.2)
+
+[node name="player" parent="." instance=ExtResource("2_be30o")]
+top_level = true
+position = Vector2(134, 356)
+collision_mask = 12
+
+[node name="ground" type="Node" parent="."]
+
+[node name="ground" type="TileMapLayer" parent="ground"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_gmgay")
+
+[node name="slime" type="TileMapLayer" parent="ground" groups=["slime"]]
+position = Vector2(0, 5)
+tile_set = SubResource("TileSet_lo8o4")
+
+[node name="spikes" type="TileMapLayer" parent="ground" groups=["spikes"]]
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_rxat5")
+
+[node name="invert_gravity" type="TileMapLayer" parent="ground" groups=["invert_gravity"]]
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_wjxiy")
+
+[node name="normalize_gravity" type="TileMapLayer" parent="ground" groups=["normalize_gravity"]]
+z_index = -1
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_08udq")
+
+[node name="red_bg" type="TileMapLayer" parent="ground"]
+z_index = -99
+position = Vector2(0, 65)
+scale = Vector2(0.9, 0.9)
+tile_set = SubResource("TileSet_lmvm7")
+
+[node name="red_bg_animation" type="AnimationPlayer" parent="ground"]
+libraries = {
+&"": SubResource("AnimationLibrary_lmvm7")
+}
+autoplay = "red_bg_moving"
+
+[node name="secrets" type="Node" parent="ground"]
+
+[node name="secret_1" type="TileMapLayer" parent="ground/secrets" groups=["secret_1"]]
+show_behind_parent = true
+top_level = true
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_1rm5t")
+
+[node name="secrets" type="AnimationPlayer" parent="ground/secrets"]
+libraries = {
+&"": SubResource("AnimationLibrary_rxat5")
+}
+
+[node name="campfires" type="Node" parent="."]
+
+[node name="dash_stars" type="Node" parent="."]
+
+[node name="items" type="Node" parent="."]
+
+[node name="CL" type="CanvasLayer" parent="."]
+script = ExtResource("13_a7v85")
+
+[node name="Label" type="Label" parent="CL"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -13.0
+offset_right = 136.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "nao pode fugir"
+
+[node name="dying" type="Label" parent="CL"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -13.0
+offset_right = 136.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Tente de novo
+ninguem liga"
+horizontal_alignment = 1
+
+[node name="campfire_gui" parent="." instance=ExtResource("14_qb8qv")]

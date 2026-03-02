@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dueh6w65122ev"
+path="res://.godot/imported/In Honor - Final Part.mp3-07728a96e43ae12e1bb2436fa9adef4b.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/In Honor - Final Part.mp3"
+dest_files=["res://.godot/imported/In Honor - Final Part.mp3-07728a96e43ae12e1bb2436fa9adef4b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

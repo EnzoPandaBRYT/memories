@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lkim8rdui4b8"
+path="res://.godot/imported/Holy Life - Mid.mp3-fb1f1dce7c7bca098bc2d24ea34838b7.mp3str"
+
+[deps]
+
+source_file="res://audios/ost/Holy Life - Mid.mp3"
+dest_files=["res://.godot/imported/Holy Life - Mid.mp3-fb1f1dce7c7bca098bc2d24ea34838b7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
